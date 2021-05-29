@@ -17,8 +17,9 @@
         <div class="jumbotron">
             <h1>Playlist</h1>
         </div>
-				<form method="POST">
-					<input name="text">
+				<form action="{{ url_for('my_form_post') }}" method="post">
+                    
+					<input name="song">
 					<input type="submit">
 				</form>
         <div id="sl">

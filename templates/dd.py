@@ -1,7 +1,9 @@
+
 import pandas as pd
+import sys
 import numpy as np
 
-songs= pd.read_csv("audio-features/workout_track.csv")
+songs= pd.read_csv("tracks.csv")
 
 songs['loudness'] = -((songs['loudness'])/10)
 songs['tempo'] = songs['tempo']/250
@@ -57,13 +59,13 @@ X_train, X_test, y_train, y_test = train_test_split(scaled_df, y, test_size=0.2,
 forest = RandomForestClassifier(n_estimators=100, max_depth= 5)
 forest.fit(X_train, y_train)
 
-song_input = input()
+song_input = sys.argv[1]
 a = songs['id'].where(songs['name'] == '{}'.format(song_input)).any()
-a = songs[['acousticness', 'danceability', 'energy', 'instrumentalness','liveness', 'loudness', 'speechiness', 'tempo', 'valence']].where(songs['name'] == 'Panda')
+a = songs[['acousticness', 'danceability', 'energy', 'instrumentalness','liveness', 'loudness', 'speechiness', 'tempo', 'valence']].where(songs['name'] == song_input)
 a= a.dropna()
 pred = forest.predict(a)
 
 print(pred[0])
 
-z = songs.groupby('Genre').groups['Fast & Danceable']
-print(songs["name"].iloc[z].head(10))
+z = songs.groupby('Genre').groups[pred[0]]
+songs["name"].iloc[z].head(10).to_excel("temp.xlsx")

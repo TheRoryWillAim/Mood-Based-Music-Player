@@ -69,5 +69,5 @@ print(pred[0])
 
 z = songs.groupby('Genre').groups[pred[0]]
 print(songs["name"].iloc[z].head(10))
-songs["name"].iloc[z].head(10).to_excel("temp.xlsx")
+songs["name"].iloc[z].head(20).to_excel("temp.xlsx")
 songs["name"].iloc[z].head(10).to_excel("newtemp.xlsx")

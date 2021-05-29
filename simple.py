@@ -14,8 +14,8 @@ def my_form():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    text = request.form['text']
-    subprocess.call(["python3", "dd.py",'{}'.format(text)])
+    text = request.form['song']
+    subprocess.call(["python", "old_dd.py",'{}'.format(text)])
     return redirect('/upload')
 
 
@@ -27,4 +27,6 @@ def upload_file():
     titles = ['Songs'])
 
 if __name__=='__main__':
-	app.run()
+    app.debug = True
+    app.run()
+    
