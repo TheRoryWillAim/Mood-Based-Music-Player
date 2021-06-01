@@ -4,9 +4,19 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
   <h1>Surfer groups</h1>
-  {% for table in tables %}
+  <!-- {% for table in tables %}
     <h2>{{titles[loop.index]}}</h2>
     {{ table|safe }}
-  {% endfor %}
+  {% endfor %} -->
+  <div style="text-align: center; margin-left: 35%; margin-top: 4%; ">
+    <table>
+      <thead ><tr><th style="color: #044ff1; font-size: 30px;">Name</th></tr></thead>
+      <tbody>
+        {% for i in tables %}
+      <tr ><td>{{i}}</td></tr>
+      {% endfor %}
+      </tbody>
+      </table>
+  </div>
 </div>
 </html>

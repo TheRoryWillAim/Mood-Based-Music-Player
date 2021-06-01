@@ -23,8 +23,8 @@ def my_form_post():
 @app.route("/upload", methods=['GET', 'POST'])
 def upload_file():
     data = pd.read_excel('temp.xlsx')
-    return render_template('view.html',tables=[data.to_html(classes='name')],
-    titles = ['Songs'])
+    songs = data['name'].tolist()
+    return render_template('view.html', tables=songs,titles=['Songs'])
 
 if __name__=='__main__':
     app.debug = True
