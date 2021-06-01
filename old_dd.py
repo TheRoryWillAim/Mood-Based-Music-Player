@@ -69,8 +69,9 @@ pred = forest.predict(a)
 print(pred[0])
 
 z = songs.groupby('Genre').groups[pred[0]]
-print(songs["name"].iloc[z].head(10))
+
 i=random.randint(0,67)
 j=i+10
+print(songs["name"].iloc[i:j])
 songs["name"].iloc[z][i:j].to_excel("temp.xlsx")
 # songs["name"].iloc[z].head(10).to_excel("newtemp.xlsx")
